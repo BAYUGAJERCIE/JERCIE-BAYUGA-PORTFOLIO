@@ -284,3 +284,20 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .form-status[data-state="success"] { color: #9fd5b0; }
 .form-status[data-state="error"] { color: #ff9a9a; }
 .form-submit:disabled { cursor: wait; opacity: .72; }
+
+.certificates-section { background: #0d1015; }
+.certificate-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.certificate-card { display: flex; min-width: 0; flex-direction: column; overflow: hidden; border: 1px solid #29323e; background: #201e1c; }
+.certificate-issuer { margin: 0 0 12px; color: var(--blue); font-size: 8px; font-weight: 700; letter-spacing: .14em; }
+.certificate-content { display: flex; flex: 1; flex-direction: column; padding: 20px; }
+.certificate-card h3 { margin: 0 0 9px; font: 600 19px/1.3 var(--display); }
+.certificate-description { margin: 0; color: #a6afbb; font-size: 10px; line-height: 1.75; }
+.certificate-meta { margin-top: 16px; color: #8793a1; font-size: 9px; }
+.certificate-preview { width: 100%; aspect-ratio: 1.42; overflow: hidden; border-bottom: 1px solid #3a3836; background: #eef0f2; }
+.certificate-preview iframe { display: block; width: 100%; height: 100%; border: 0; }
+.certificate-link { display: inline-flex; align-self: flex-start; gap: 8px; margin-top: auto; padding: 10px 16px; border: 1px solid #a76c25; border-radius: 99px; color: #edaa57; font-size: 10px; font-weight: 700; }
+.certificate-link:hover { color: #b3d1ff; }
+
+@media (max-width: 900px) { .certificate-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 700px) { .certificate-grid { grid-template-columns: 1fr; } }
+

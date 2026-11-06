@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   color-scheme: dark;
   --bg: #0b0d11;
   --panel: #111720;
@@ -281,3 +281,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 .project-logo-acad { position: relative; z-index: 1; display: block; width: 145px; height: 145px; padding: 8px; object-fit: contain; background: #fff; border: 1px solid #ffffff40; border-radius: 18px; box-shadow: 0 16px 40px #0005; }
 
+.form-status[data-state="success"] { color: #9fd5b0; }
+.form-status[data-state="error"] { color: #ff9a9a; }
+.form-submit:disabled { cursor: wait; opacity: .72; }

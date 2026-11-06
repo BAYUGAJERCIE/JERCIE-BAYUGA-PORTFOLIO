@@ -173,3 +173,21 @@ contactForm.addEventListener('submit', async (event) => {
     submitButton.innerHTML = originalButtonMarkup;
   }
 });
+
+// Decorative cursor aura; the browser's normal pointer remains active.
+const cursorAura = document.querySelector('.cursor-aura');
+if (cursorAura && window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)').matches) {
+  document.addEventListener('pointermove', (event) => {
+    cursorAura.style.transform = `translate3d(${event.clientX + 13}px, ${event.clientY + 13}px, 0) translate(-50%, -50%)`;
+    cursorAura.classList.add('is-visible');
+  }, { passive: true });
+  document.addEventListener('pointerover', (event) => {
+    if (event.target.closest('a, button, input, textarea, select, [role="button"]')) cursorAura.classList.add('is-hovering');
+  });
+  document.addEventListener('pointerout', (event) => {
+    if (event.target.closest('a, button, input, textarea, select, [role="button"]') && !event.relatedTarget?.closest('a, button, input, textarea, select, [role="button"]')) cursorAura.classList.remove('is-hovering');
+  });
+  document.addEventListener('pointerdown', () => cursorAura.classList.add('is-pressed'));
+  document.addEventListener('pointerup', () => cursorAura.classList.remove('is-pressed'));
+  document.addEventListener('pointerleave', () => cursorAura.classList.remove('is-visible'));
+}

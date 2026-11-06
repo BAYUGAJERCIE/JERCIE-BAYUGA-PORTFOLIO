@@ -173,21 +173,3 @@ contactForm.addEventListener('submit', async (event) => {
     submitButton.innerHTML = originalButtonMarkup;
   }
 });
-
-
-
-const customCursor = document.querySelector('.custom-cursor');
-if (customCursor && window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)').matches) {
-  document.body.classList.add('has-custom-cursor');
-  document.addEventListener('pointermove', (event) => {
-    customCursor.style.transform = `translate3d(${event.clientX - 17}px, ${event.clientY - 17}px, 0)`;
-  }, { passive: true });
-  document.addEventListener('pointerover', (event) => {
-    if (event.target.closest('a, button, input, textarea, select, [role="button"]')) customCursor.classList.add('is-hovering');
-  });
-  document.addEventListener('pointerout', (event) => {
-    if (event.target.closest('a, button, input, textarea, select, [role="button"]') && !event.relatedTarget?.closest('a, button, input, textarea, select, [role="button"]')) customCursor.classList.remove('is-hovering');
-  });
-  document.addEventListener('pointerdown', () => customCursor.classList.add('is-pressed'));
-  document.addEventListener('pointerup', () => customCursor.classList.remove('is-pressed'));
-}

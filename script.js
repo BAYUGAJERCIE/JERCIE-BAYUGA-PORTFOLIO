@@ -133,3 +133,44 @@ backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 's
 document.querySelector('#year').textContent = new Date().getFullYear();
 
 
+
+const contactForm = document.querySelector('#contactForm');
+const formStatus = document.querySelector('#formStatus');
+const submitButton = contactForm.querySelector('button[type="submit"]');
+const originalButtonMarkup = submitButton.innerHTML;
+
+contactForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  if (!contactForm.reportValidity()) return;
+
+  submitButton.disabled = true;
+  submitButton.textContent = 'Sending…';
+  formStatus.dataset.state = 'pending';
+  formStatus.textContent = 'Sending your message…';
+
+  try {
+    const response = await fetch(contactForm.action, {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      body: new FormData(contactForm)
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      const details = result.errors?.map((item) => item.message).filter(Boolean).join(' ');
+      throw new Error(details || 'Your message could not be sent. Please try again.');
+    }
+
+    formStatus.dataset.state = 'success';
+    formStatus.textContent = 'Thanks! Your message has been sent.';
+    contactForm.reset();
+  } catch (error) {
+    formStatus.dataset.state = 'error';
+    formStatus.textContent = error instanceof TypeError
+      ? 'Could not connect to the form service. Please try again or email jese.bayuga.au@phinmaed.com.'
+      : error.message;
+  } finally {
+    submitButton.disabled = false;
+    submitButton.innerHTML = originalButtonMarkup;
+  }
+});
+

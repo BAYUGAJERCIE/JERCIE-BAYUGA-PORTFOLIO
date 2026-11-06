@@ -1,4 +1,4 @@
-﻿JERCIE BAYUGA
+JERCIE BAYUGA
 Aspiring UI/UX Designer & BSIT Student
 [Your City] · jese.bayuga.au@phinmaed.com · [LinkedIn profile] · [GitHub profile]
 
@@ -11,6 +11,11 @@ PHINMA ARAULLO UNIVERSITY · 4TH YEAR
 
 Relevant learning areas
 Web Development · Programming Fundamentals · Database Management · Systems Analysis and Design · User Interface and User Experience Design
+
+CERTIFICATIONS
+Oracle Data Platform 2025 Certified Foundations Associate — Oracle University · September 5, 2025
+Oracle OCI Foundations — Oracle University
+Linux Unhatched — Cisco Networking Academy · October 25, 2026
 
 SELECTED PROJECTS
 AcadLearn — Learning Management System
@@ -35,6 +40,8 @@ Personal skills: Effective Communication · Team Collaboration · Time Managemen
 
 EXPERIENCE & ACTIVITIES
 [Add relevant academic work, activities, workshops, or experience. Include only details you can verify.]
+
+
 
 
 

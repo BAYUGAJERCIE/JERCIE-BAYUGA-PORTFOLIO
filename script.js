@@ -1,4 +1,4 @@
-﻿'use strict';
+'use strict';
 
 document.documentElement.classList.add('js');
 
@@ -131,53 +131,5 @@ window.addEventListener('scroll', updateBackToTop, { passive: true });
 updateBackToTop();
 backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 document.querySelector('#year').textContent = new Date().getFullYear();
-
-const contactForm = document.querySelector('#contactForm');
-const formStatus = document.querySelector('#formStatus');
-const submitButton = contactForm.querySelector('button[type="submit"]');
-const defaultSubmitLabel = submitButton.innerHTML;
-contactForm.addEventListener('submit', async (event) => {
-  event.preventDefault();
-  if (!contactForm.reportValidity()) return;
-
-  const payload = Object.fromEntries(new FormData(contactForm));
-  payload._replyto = payload.email;
-  submitButton.disabled = true;
-  submitButton.textContent = 'Sending…';
-  formStatus.textContent = 'Sending your message…';
-
-  try {
-    const response = await fetch(contactForm.action, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      },
-      body: JSON.stringify(payload)
-    });
-    const result = await response.json();
-    if (!response.ok || result.success === false || result.success === 'false') {
-      throw new Error(result.message || `FormSubmit returned status ${response.status}.`);
-    }
-    formStatus.textContent = result.message || 'Message sent. Thank you for reaching out!';
-    contactForm.reset();
-  } catch (error) {
-    console.error('Portfolio contact form error:', error);
-    if (error instanceof TypeError) {
-      formStatus.textContent = 'Hindi makakonekta sa form service. Tingnan ang internet connection at subukan muli.';
-    } else {
-      formStatus.textContent = `Hindi naipadala: ${error.message} Kung unang gamit ito sa bagong email, tingnan ang inbox at Spam folder para sa FormSubmit verification.`;
-    }
-  } finally {
-    submitButton.disabled = false;
-    submitButton.innerHTML = defaultSubmitLabel;
-  }
-});
-
-
-
-
-
-
 
 

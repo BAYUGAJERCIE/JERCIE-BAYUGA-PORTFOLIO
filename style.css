@@ -301,12 +301,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (max-width: 900px) { .certificate-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 700px) { .certificate-grid { grid-template-columns: 1fr; } }
 
-
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .custom-cursor { position: fixed; z-index: 1000; top: 0; left: 0; width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid #8cb9ff9c; border-radius: 50%; background: #8cb9ff12; box-shadow: 0 0 22px #6ba5ff24; pointer-events: none; opacity: 0; transform: translate3d(-100px, -100px, 0) scale(.8); transition: opacity .18s ease, background .2s ease, border-color .2s ease, scale .2s ease; will-change: transform; }
-  .custom-cursor span { width: 5px; height: 5px; border-radius: 50%; background: #a8cbff; box-shadow: 0 0 12px #8cb9ffb0; }
-  body.has-custom-cursor, body.has-custom-cursor a, body.has-custom-cursor button { cursor: none; }
-  body.has-custom-cursor .custom-cursor { opacity: 1; }
-  body.has-custom-cursor .custom-cursor.is-hovering { scale: 1.45; border-color: #b5d3ff; background: #8cb9ff24; }
-  body.has-custom-cursor .custom-cursor.is-pressed { scale: .82; }
+@media (hover: hover) and (pointer: fine) {
+  a, button { cursor: pointer; }
+  .button:hover, .text-button:hover, .certificate-link:hover, .primary-nav a:hover, .social-links a:hover, .footer-links a:hover { filter: drop-shadow(0 0 7px #8cb9ff55); }
 }
